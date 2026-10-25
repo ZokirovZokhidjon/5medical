@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Davlatobod 5-poliklinikasi - Shikoyat va Takliflar</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f6;
+            color: #333;
+        }
+
+        /* HEADER & SHAPKA */
+        .header-container {
+            background: linear-gradient(135deg, #005c97, #363795);
+            color: white;
+            padding: 25px 20px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+
+        .header-container img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #ffffff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .header-container img:hover {
+            transform: scale(1.05);
+        }
+
+        .header-container h1 {
+            font-size: 22px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            max-width: 700px;
+            text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* NAVIGATSIYA MENYUSI */
+        .nav-container {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin: 20px auto;
+            max-width: 1100px;
+            border-radius: 12px;
+            padding: 10px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #005c97;
+            font-weight: 500;
+            font-size: 15px;
+            padding: 10px 16px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        nav a.active, nav a:hover {
+            background-color: #005c97;
+            color: #ffffff;
+            box-shadow: 0 2px 8px rgba(0, 92, 151, 0.3);
+        }
+
+        /* ASOSIY BO'LIM / SHIKOYAT VA TAKLIFLAR */
+        .main-container {
+            max-width: 1100px;
+            margin: 20px auto;
+            padding: 0 15px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .card h2 {
+            color: #005c97;
+            margin-bottom: 15px;
+            font-size: 20px;
+            border-bottom: 2px solid #eef2f5;
+            padding-bottom: 10px;
+        }
+
+        /* FORM BOSHQRUVI */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: #555;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            transition: border 0.3s ease;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: #005c97;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .checkbox-group input {
+            width: auto;
+            cursor: pointer;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: #005c97;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background: #004473;
+        }
+
+        /* TELEGRAM BOT BOX */
+        .tg-box {
+            background: #e8f4f9;
+            border: 1px dashed #0088cc;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn-telegram {
+            display: inline-block;
+            background: #0088cc;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            margin-top: 10px;
+            transition: background 0.3s ease;
+        }
+
+        .btn-telegram:hover {
+            background: #006699;
+        }
+
+        /* SHIKOYAT VA TAKLIFLAR RO'YXATI */
+        .feedback-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .feedback-item {
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #005c97;
+        }
+
+        .feedback-item.shikoyat {
+            border-left-color: #e74c3c;
+        }
+
+        .feedback-item.taklif {
+            border-left-color: #2ecc71;
+        }
+
+        .feedback-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .feedback-author {
+            font-weight: 600;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .feedback-type {
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 12px;
+            color: white;
+            font-weight: 500;
+        }
+
+        .type-shikoyat { background-color: #e74c3c; }
+        .type-taklif { background-color: #2ecc71; }
+        .type-minnatdorchilik { background-color: #f39c12; }
+
+        .feedback-text {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .feedback-date {
+            font-size: 11px;
+            color: #888;
+            margin-top: 6px;
+            text-align: right;
+        }
+
+        .admin-reply {
+            background: #eef6ff;
+            border-radius: 6px;
+            padding: 8px 12px;
+            margin-top: 8px;
+            font-size: 12px;
+            border-left: 3px solid #005c97;
+        }
+
+        /* MOBIL UCHUN RESPONSIVE */
+        @media (max-width: 768px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+
+            .header-container {
+                flex-direction: column;
+                padding: 20px 15px;
+            }
+
+            .header-container h1 {
+                font-size: 18px;
+            }
+
+            nav {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            nav a {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Bosh qism -->
+    <header class="header-container">
+        <img src="doc11.jfif" alt="Poliklinika Logotipi">
+        <h1>ДАВЛАТОБОД ТУМАНИ 5-ПОЛИКЛИНИКАСИНИНГ ВЕБ-САҲИФАСИ</h1>
+    </header>
+
+    <!-- Menyular -->
+    <div class="nav-container">
+        <nav>
+            <a href="index.html">Асосий саҳифа</a>
+            <a href="#">Қабулга ёзилиш</a>
+            <a href="#">Янгиликлар</a>
+            <a href="#" class="active">Шикоят ва мурожаатлар</a>
+            <a href="#">Биз ҳақимизда</a>
+        </nav>
+    </div>
+
+    <!-- Asosiy bo'lim -->
+    <div class="main-container">
+        
+        <!-- Chap tomonda: Murojaat va shikoyat yuborish formasi -->
+        <div class="card">
+            <h2>Murojaat va taklif yuborish</h2>
+            <form id="feedbackForm">
+                <div class="form-group">
+                    <label for="type">Murojaat turi:</label>
+                    <select id="type" required>
+                        <option value="taklif">Taklif</option>
+                        <option value="shikoyat">Shikoyat</option>
+                        <option value="minnatdorchilik">Minnatdorchilik</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="fullName">F.I.SH. (Ismingiz):</label>
+                    <input type="text" id="fullName" placeholder="Masalan: Hasanov Ali" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Telefon raqamingiz:</label>
+                    <input type="tel" id="phone" placeholder="+998 90 123 45 67" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Murojaat yoki taklif matni:</label>
+                    <textarea id="message" placeholder="Fikr va mulohazalaringizni batafsil yozing..." required></textarea>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="anonymous" onchange="toggleAnonymous()">
+                    <label for="anonymous" style="margin-bottom:0; cursor:pointer;">Anonim tarzda yuborish (ism ko'rsatilmaydi)</label>
+                </div>
+
+                <button type="submit" class="btn-submit">Murojaatni yuborish</button>
+            </form>
+
+            <div class="tg-box">
+                <p><strong>Telegram Bot orqali to'g'ridan-to'g'ri bog'lanish:</strong></p>
+                <a href="https://t.me/SizningPoliklinikaBotingiz" target="_blank" class="btn-telegram">🤖 Bot orqali murojaat qilish</a>
+            </div>
+        </div>
+
+        <!-- O'ng tomonda: So'nggi murojaatlar va javoblar -->
+        <div class="card">
+            <h2>Fuqarolar murojaatlari</h2>
+            <div class="feedback-list" id="feedbackList">
+                
+                <!-- Namuna murojaat 1 -->
+                <div class="feedback-item taklif">
+                    <div class="feedback-header">
+                        <span class="feedback-author">Anvar Ibragimov</span>
+                        <span class="feedback-type type-taklif">Taklif</span>
+                    </div>
+                    <p class="feedback-text">Elektron navbat tizimini yanada soddalashtirish va qabulxonaga qo'shimcha o'rindiqlar qo'yishni taklif qilaman.</p>
+                    <div class="feedback-date">24.10.2026</div>
+                    <div class="admin-reply">
+                        <strong>Ma'muriyat javobi:</strong> Taklifingiz uchun rahmat! Yaqin kunlarda kutish zaliga yangi o'rindiqlar o'rnatiladi.
+                    </div>
+                </div>
+
+                <!-- Namuna murojaat 2 -->
+                <div class="feedback-item shikoyat">
+                    <div class="feedback-header">
+                        <span class="feedback-author">Anonim</span>
+                        <span class="feedback-type type-shikoyat">Shikoyat</span>
+                    </div>
+                    <p class="feedback-text">Registratura bo'limida ertalab navbat juda uzun bo'lib ketmoqda. Xodimlar sonini ko'paytirishni so'rayman.</p>
+                    <div class="feedback-date">22.10.2026</div>
+                    <div class="admin-reply">
+                        <strong>Ma'muriyat javobi:</strong> Murojaatingiz o'rganib chiqildi. Ertalabki tig'iz vaqtlarda qo'shimcha 2 nafar xodim ajratildi.
+                    </div>
+                </div>
+
+                <!-- Namuna murojaat 3 -->
+                <div class="feedback-item">
+                    <div class="feedback-header">
+                        <span class="feedback-author">Nargiza Umarova</span>
+                        <span class="feedback-type type-minnatdorchilik">Minnatdorchilik</span>
+                    </div>
+                    <p class="feedback-text">Pediatr Dr. Ahmadovga alohida rahmat aytmoqchiman. Farzandimga juda g'amxo'rlik bilan tibbiy yordam ko'rsatdilar.</p>
+                    <div class="feedback-date">20.10.2026</div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleAnonymous() {
+            const isAnon = document.getElementById("anonymous").checked;
+            const nameInput = document.getElementById("fullName");
+            
+            if (isAnon) {
+                nameInput.value = "Anonim";
+                nameInput.disabled = true;
+            } else {
+                nameInput.value = "";
+                nameInput.disabled = false;
+            }
+        }
+
+        // Formani yuborish va Telegram botga uzatish
+        document.getElementById("feedbackForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            const type = document.getElementById("type").value;
+            const typeText = document.getElementById("type").options[document.getElementById("type").selectedIndex].text;
+            const name = document.getElementById("fullName").value;
+            const phone = document.getElementById("phone").value;
+            const message = document.getElementById("message").value;
+
+            // Telegram Bot orqali bildirishnoma yuborish kodi
+            const botToken = "BOT_TOKENINGIZNI_SHUYERGA_YOZING";
+            const chatId = "CHAT_IDINGIZNI_SHUYERGA_YOZING";
+            
+            const tgMessage = `📩 *Yangi Murojaat!* (${typeText})\n\n👤 *Yuboruvchi:* ${name}\n📞 *Tel:* ${phone}\n📝 *Xabar:* ${message}`;
+
+            /* 
+            fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ chat_id: chatId, text: tgMessage, parse_mode: 'Markdown' })
+            });
+            */
+
+            // Yangi fikrni o'ng tomondagi ro'yxatga darhol qo'shish
+            const feedbackList = document.getElementById("feedbackList");
+            const today = new Date().toLocaleDateString('uz-UZ');
+
+            const newItem = document.createElement("div");
+            newItem.className = `feedback-item ${type}`;
+            newItem.innerHTML = `
+                <div class="feedback-header">
+                    <span class="feedback-author">${name}</span>
+                    <span class="feedback-type type-${type}">${typeText}</span>
+                </div>
+                <p class="feedback-text">${message}</p>
+                <div class="feedback-date">${today}</div>
+            `;
+
+            feedbackList.prepend(newItem);
+
+            alert("Murojaatingiz muvaffaqiyatli yuborildi. Etiboringiz uchun rahmat!");
+            this.reset();
+            document.getElementById("fullName").disabled = false;
+        });
+    </script>
+</body>
+</html>

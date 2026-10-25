@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Davlatobod 5-poliklinikasi</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f6;
+            color: #333;
+        }
+
+        /* HEADER & SHAPKA */
+        .header-container {
+            background: linear-gradient(135deg, #005c97, #363795);
+            color: white;
+            padding: 25px 20px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+
+        .header-container img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #ffffff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .header-container img:hover {
+            transform: scale(1.05);
+        }
+
+        .header-container h1 {
+            font-size: 22px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            max-width: 700px;
+            text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* NAVIGATSIYA MENYUSI */
+        .nav-container {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin: 20px auto;
+            max-width: 1100px;
+            border-radius: 12px;
+            padding: 10px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #005c97;
+            font-weight: 500;
+            font-size: 15px;
+            padding: 10px 16px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #005c97;
+            color: #ffffff;
+            box-shadow: 0 2px 8px rgba(0, 92, 151, 0.3);
+        }
+
+        /* ASOSIY BO'LIM / QABULGA YOZILISH */
+        .main-container {
+            max-width: 1100px;
+            margin: 20px auto;
+            padding: 0 15px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .card h2 {
+            color: #005c97;
+            margin-bottom: 15px;
+            font-size: 20px;
+            border-bottom: 2px solid #eef2f5;
+            padding-bottom: 10px;
+        }
+
+        /* FORM BOSHQRUVI */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: #555;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            transition: border 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: #005c97;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: #005c97;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background: #004473;
+        }
+
+        /* TELEGRAM BOT TUGMASI */
+        .tg-box {
+            background: #e8f4f9;
+            border: 1px dashed #0088cc;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn-telegram {
+            display: inline-block;
+            background: #0088cc;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            margin-top: 10px;
+            transition: background 0.3s ease;
+        }
+
+        .btn-telegram:hover {
+            background: #006699;
+        }
+
+        /* SHIFOKOR MALUMOTLARI KARTASI */
+        .doctor-info-box {
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #005c97;
+            margin-top: 15px;
+        }
+
+        .doctor-info-box p {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        /* MOBIL UCHUN RESPONSIVE */
+        @media (max-width: 768px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+
+            .header-container {
+                flex-direction: column;
+                padding: 20px 15px;
+            }
+
+            .header-container h1 {
+                font-size: 18px;
+            }
+
+            nav {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            nav a {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Bosh qism -->
+    <header class="header-container">
+        <img src="doc11.jfif" alt="Poliklinika Logotipi">
+        <h1>ДАВЛАТОБОД ТУМАНИ 5-ПОЛИКЛИНИКАСИНИНГ ВЕБ-САҲИФАСИ</h1>
+    </header>
+
+    <!-- Menyular -->
+    <div class="nav-container">
+        <nav>
+            <a href="index.html">Асосий саҳифа</a>
+            <a href="#booking">Қабулга ёзилиш</a>
+            <a href="#">Янгиликлар</a>
+            <a href="pes.html">Шикоят ва мурожаатлар</a>
+            <a href="#">Биз ҳақимизда</a>
+        </nav>
+    </div>
+
+    <!-- Asosiy ishchi bo'lim -->
+    <div class="main-container" id="booking">
+        
+        <!-- Chap tomonda: Qabulga yozilish formasi -->
+        <div class="card">
+            <h2>Shifokor qabuliga yozilish</h2>
+            <form id="appointmentForm">
+                <div class="form-group">
+                    <label for="fullName">F.I.SH. (Ism va Familiyangiz):</label>
+                    <input type="text" id="fullName" placeholder="Masalan: Aliyev Vali" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Telefon raqamingiz:</label>
+                    <input type="tel" id="phone" placeholder="+998 90 123 45 67" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="doctorSelect">Shifokorni tanlang:</label>
+                    <select id="doctorSelect" onchange="updateDoctorInfo()" required>
+                        <option value="">-- Shifokorni tanlang --</option>
+                        <option value="pediatr">Dr. Ahmadov - Pediatr (Bolalar shifokori)</option>
+                        <option value="terapevt">Dr. Karimova - Terapevt</option>
+                        <option value="stomatolog">Dr. Rahimov - Stomatolog</option>
+                        <option value="kardiolog">Dr. Sobirov - Kardiolog</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Qabul kunini tanlang:</label>
+                    <input type="date" id="date" required>
+                </div>
+
+                <button type="submit" class="btn-submit">Qabulga yozilishni tasdiqlash</button>
+            </form>
+
+            <div class="tg-box">
+                <p><strong>Telegram orqali o'zingizga qulay vaqtda yozilmoqchimisiz?</strong></p>
+                <a href="https://t.me/SizningPoliklinikaBotingiz" target="_blank" class="btn-telegram">🤖 Telegram Bot orqali yozilish</a>
+            </div>
+        </div>
+
+        <!-- O'ng tomonda: Shifokorning grafik ma'lumotlari -->
+        <div class="card">
+            <h2>Shifokorning ish vaqti va grafik</h2>
+            <div id="doctorDetails">
+                <p style="color: #777;">Iltimos, chap tomondan shifokorni tanlang. Uning ish vaqti va bo'sh kunlari shu yerda ko'rinadi.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Shifokorlar haqida ma'lumotlar bazasi (Buni xohlagancha o'zgartirishingiz mumkin)
+        const doctorData = {
+            pediatr: {
+                name: "Dr. Ahmadov B.",
+                spec: "Pediatr",
+                workHours: "08:00 - 14:00",
+                workDays: "Dushanba - Juma",
+                room: "12-xona"
+            },
+            terapevt: {
+                name: "Dr. Karimova N.",
+                spec: "Terapevt",
+                workHours: "09:00 - 16:00",
+                workDays: "Dushanba - Shanba",
+                room: "05-xona"
+            },
+            stomatolog: {
+                name: "Dr. Rahimov SH.",
+                spec: "Stomatolog",
+                workHours: "10:00 - 15:00",
+                workDays: "Seshanba, Payshanba, Shanba",
+                room: "18-xona"
+            },
+            kardiolog: {
+                name: "Dr. Sobirov A.",
+                spec: "Kardiolog",
+                workHours: "08:30 - 13:00",
+                workDays: "Dushanba, Chorshanba, Juma",
+                room: "08-xona"
+            }
+        };
+
+        // Shifokor tanlanganda ma'lumotni chiqaruvchi funksiya
+        function updateDoctorInfo() {
+            const select = document.getElementById("doctorSelect").value;
+            const detailsDiv = document.getElementById("doctorDetails");
+
+            if (select && doctorData[select]) {
+                const doc = doctorData[select];
+                detailsDiv.innerHTML = `
+                    <div class="doctor-info-box">
+                        <p><strong>Shifokor:</strong> ${doc.name}</p>
+                        <p><strong>Mutaxassisligi:</strong> ${doc.spec}</p>
+                        <p><strong>Xona:</strong> ${doc.room}</p>
+                        <p><strong>Ish kunlari:</strong> ${doc.workDays}</p>
+                        <p><strong>Ish vaqti:</strong> ${doc.workHours}</p>
+                    </div>
+                `;
+            } else {
+                detailsDiv.innerHTML = `<p style="color: #777;">Iltimos, chap tomondan shifokorni tanlang. Uning ish vaqti va bo'sh kunlari shu yerda ko'rinadi.</p>`;
+            }
+        }
+
+        // Formani yuborish va Telegram botga yuborish mexanizmi
+        document.getElementById("appointmentForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById("fullName").value;
+            const phone = document.getElementById("phone").value;
+            const doctorKey = document.getElementById("doctorSelect").value;
+            const date = document.getElementById("date").value;
+
+            const docName = doctorData[doctorKey].name;
+
+            // Telegram Bot orqali bildirishnoma yuborish (Token va Chat_ID o'rnini to'ldirasiz)
+            const botToken = "BOT_TOKENINGIZNI_SHUYERGA_YOZING";
+            const chatId = "CHAT_IDINGIZNI_SHUYERGA_YOZING";
+            
+            const message = `🏥 *Yangi qabulga yozilish!*\n\n👤 *Bemor:* ${name}\n📞 *Tel:* ${phone}\n👨‍⚕️ *Shifokor:* ${docName}\n📅 *Kuni:* ${date}`;
+
+            // Telegram API ga yuborish requesti
+            /*
+            fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ chat_id: chatId, text: message, parse_mode: 'Markdown' })
+            });
+            */
+
+            alert(`Rahmat, ${name}! Siz ${docName} qabuliga ${date} sanasiga muvaffaqiyatli yozildingiz.`);
+            this.reset();
+            document.getElementById("doctorDetails").innerHTML = `<p style="color: #777;">Iltimos, chap tomondan shifokorni tanlang. Uning ish vaqti va bo'sh kunlari shu yerda ko'rinadi.</p>`;
+        });
+    </script>
+</body>
+</html>
